@@ -243,6 +243,8 @@ public class AdventureSimulator extends Application
         Button fightbtn = new Button("fight!");
         Button atkbtn = new Button("attack");
         Button enemystats = new Button("enemystats");
+        Button continuebtn = new Button("Continue forward!");
+        
         Enemies enemy = new Enemies(player);
         
         
@@ -252,6 +254,7 @@ public class AdventureSimulator extends Application
         Label gameLbl = new Label();
         Label enemyatkLbl = new Label();
         Label playeratkLbl = new Label();
+        Label lvlLbl = new Label();
         VBox status_menu = new VBox();
         
         
@@ -260,6 +263,8 @@ public class AdventureSimulator extends Application
         atkbtn.setVisible(false);
         enemystats.setVisible(false);
         Statsbtn.setVisible(false);
+        continuebtn.setVisible(false);
+        //lvlLbl.setVisible(false);
         
         Statsbtn.setOnAction(new EventHandler<ActionEvent>()
         {
@@ -281,6 +286,7 @@ public class AdventureSimulator extends Application
                 adventurebtn.setVisible(false);
                 fightbtn.setVisible(true);
                 Statsbtn.setVisible(true);
+                
                 gameLbl.setText("an enemy approches!");
                 
                 
@@ -292,10 +298,12 @@ public class AdventureSimulator extends Application
             {
                 atkbtn.setVisible(true);
                 enemystats.setVisible(true);
+                fightbtn.setVisible(false);
             }
         });
         atkbtn.setOnAction(new EventHandler<ActionEvent>()
         {
+            
             public void handle(ActionEvent t)
             {
                 
@@ -304,16 +312,29 @@ public class AdventureSimulator extends Application
                 //game.saveEnemyStats(enemy);
                 if(enemy.enemyhp <= 0)
                 {
-                    Enemies enemy1 = new Enemies(player);
-                    enemy.enemyhp = enemy1.enemyhp;
-                    enemy.enemy_melee_dmg = enemy1.enemy_melee_dmg;
+                    enemy.enemyhp = 0;
+                   
+                    
+                    continuebtn.setVisible(true);
+
+                    atkbtn.setVisible(false);
+                    
+                    lvlLbl.setText(game.lvlTxt);
+                    
                     gameLbl.setVisible(true);
-                    gameLbl.setText("a new enemy approches!");
+                    gameLbl.setText("A new enemy approches!");
+                    
+                    enemyatkLbl.setVisible(false);
+                    enemyLbl.setVisible(false);
+                    playeratkLbl.setVisible(false);
+                    
                     
                 }
+                
                 StatsLbl.setText(game.Display_status(player));
                 enemyLbl.setText(enemy.printEnemyStats());
                 enemyatkLbl.setText(enemy.EnemyTxt);
+                
                 playeratkLbl.setText(game.PlayerTxt);
                 
                     
@@ -331,10 +352,30 @@ public class AdventureSimulator extends Application
                 
             }
         });
+        continuebtn.setOnAction(new EventHandler<ActionEvent>()
+        {
+            public void handle(ActionEvent t )
+            {
+                    gameLbl.setVisible(false);
+                    Enemies enemy1 = new Enemies(player);
+                    enemy.enemyhp = enemy1.enemyhp;
+                    enemy.enemy_melee_dmg = enemy1.enemy_melee_dmg;
+                    atkbtn.setVisible(true);
+                    continuebtn.setVisible(false);
+                    StatsLbl.setText(game.Display_status(player));
+                    enemyLbl.setText(enemy.printEnemyStats());
+                    
+                    enemyatkLbl.setVisible(true);
+                    enemyLbl.setVisible(true);
+                    playeratkLbl.setVisible(true);
+                
+                
+            }
+        });
         
         
         
-        status_menu.getChildren().addAll(adventurebtn,Statsbtn,StatsLbl,fightbtn,enemystats,enemyLbl,atkbtn,gameLbl,playeratkLbl,enemyatkLbl);
+        status_menu.getChildren().addAll(adventurebtn,Statsbtn,StatsLbl,fightbtn,enemystats,enemyLbl,atkbtn,continuebtn,gameLbl,playeratkLbl,lvlLbl,enemyatkLbl);
         status_menu.setSpacing(20);
         status_menu.setMinSize(1280,720);
         status_menu.setAlignment(Pos.CENTER);
