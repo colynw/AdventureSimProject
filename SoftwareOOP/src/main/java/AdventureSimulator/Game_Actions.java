@@ -14,6 +14,7 @@ import static AdventureSimulator.Classes.scan;
 public class Game_Actions 
 {
     String PlayerTxt;
+    String lvlTxt;
     int enemyhp = 0;
     int enemy_melee_dmg = 0;
     
@@ -64,6 +65,7 @@ public class Game_Actions
                             break;
                     }
                     System.out.println("You earned :" + player.xp + " xp");
+                    lvlTxt = ("You Earned: " +player.xp+ " xp");
                     checkLevelUp(player);
                     return;
                 }
@@ -162,6 +164,7 @@ public class Game_Actions
         {
         if(player.xp >= 1000 && player.level == 6){
             System.out.println("Level 7!");
+            lvlTxt = ("Level 7!");
             player.level = player.level + 1;
             player.maxhp = player.maxhp + 25;
             player.playerhp = player.maxhp;
@@ -174,6 +177,7 @@ public class Game_Actions
         }else
         if(player.xp >= 400 && player.level == 5){
             System.out.println("Level 6!");
+            lvlTxt = ("Level 6!");
             player.level = player.level + 1;
             player.maxhp = player.maxhp + 25;
             player.playerhp = player.maxhp;
@@ -186,6 +190,7 @@ public class Game_Actions
         }else
         if(player.xp >= 100 && player.level == 4){
             System.out.println("Level 5!");
+            lvlTxt = ("Level 5!");
             player.level = player.level + 1;
             player.maxhp = player.maxhp + 25;
             player.playerhp = player.maxhp;
@@ -198,6 +203,7 @@ public class Game_Actions
         }else
         if(player.xp >= 50 && player.level == 3){
             System.out.println("Level 4!");
+            lvlTxt = ("Level 4!");
             player.level = player.level + 1;
             player.maxhp = player.maxhp + 20;
             player.playerhp = player.maxhp;
@@ -210,6 +216,7 @@ public class Game_Actions
         }else
         if(player.xp >= 25 && player.level == 2){
             System.out.println("Level 3!");
+            lvlTxt = ("Level 3!");
             player.level = player.level + 1;
             player.maxhp = player.maxhp + 10;
             player.playerhp = player.maxhp;
@@ -222,6 +229,7 @@ public class Game_Actions
         }else
         if(player.xp >= 10 && player.level == 1){
             System.out.println("Level 2!");
+            lvlTxt = ("Level 2!");
             player.level = player.level + 1;
             player.maxhp = player.maxhp + 5;
             player.playerhp = player.maxhp;
