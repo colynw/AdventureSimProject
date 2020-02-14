@@ -24,7 +24,7 @@ public class Classes
     Classes(String Name)
     {
         this.Name = Name;
-        this.selectClass();
+        //this.selectClass();
     }
     
     //class methods//
