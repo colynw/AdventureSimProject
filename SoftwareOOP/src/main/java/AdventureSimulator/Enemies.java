@@ -71,12 +71,15 @@ public class Enemies
                 System.exit(0);
             }
         }
+
         else
         {
-            //System.out.println("Enemy Misses!");
             EnemyTxt = ("Enemy Misses!");
             
         }
+        
+               
+
         if(player.char_class.equals("Berserker"))
         {
             player.playerhp = player.playerhp - 3;
