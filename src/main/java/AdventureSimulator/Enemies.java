@@ -1,4 +1,4 @@
-/*
+*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -8,6 +8,7 @@ package AdventureSimulator;
 
 public class Enemies 
 {   //variables//
+    String EnemyTxt;
     protected int enemyhp;
     protected int enemy_melee_dmg;
     static dice die = new dice();
@@ -46,16 +47,22 @@ public class Enemies
         
         
     }
-    protected void printEnemyStats()
+    protected String printEnemyStats()
     {
-        System.out.println("Enemy "+"\nhp: " + enemyhp + "\ndamage: " + enemy_melee_dmg + "\n");
+        //System.out.println("Enemy "+"\nhp: " + enemyhp + "\ndmg: " + enemy_melee_dmg + "\n");
+        String text;
+        text = "Enemy "+"\nhp: " + enemyhp + "\ndamage: " + enemy_melee_dmg + "\n";
+        return text;
+        
     }
     protected void enemyattack(Classes player,Enemies enemy)
     {
+        
         Game_Actions game = new Game_Actions(); //initiates game
         if(die.roll6() > 2)
         {
             System.out.println("Enemy hits!");
+            EnemyTxt = ("Enemy hits!");
             player.playerhp = player.playerhp - enemy.enemyhp;
             if(player.playerhp <= 0)
             {
@@ -66,7 +73,9 @@ public class Enemies
         }
         else
         {
-            System.out.println("Enemy Misses!");
+            //System.out.println("Enemy Misses!");
+            EnemyTxt = ("Enemy Misses!");
+            
         }
         if(player.char_class.equals("Berserker"))
         {
