@@ -4,9 +4,6 @@
  * and open the template in the editor.
  */
 package AdventureSimulator;
-import static AdventureSimulator.Classes.die;
-import static AdventureSimulator.Classes.fighting;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import javafx.application.Application;
@@ -174,7 +171,8 @@ public class AdventureSimulator extends Application
     
     protected Scene ClassSelectionScene(Stage stage)
     {
-        Classes player = new Classes(name);
+        ClassFactory player = new ClassFactory();
+
         Label selectionMsg = new Label ("Choose your Class");
         Label checkSelection = new Label();
         VBox classBox = new VBox();
@@ -196,24 +194,28 @@ public class AdventureSimulator extends Application
            {
                if (BerserkerBtn.isSelected())
                {
-                   player.Berserker();
+                   Classes playerClass = player.getClass("Berserker");
+                   playerClass.setStats();
                    System.out.println("BERSERKER!");
-                   stage.setScene(GameMenu(player));
+                   stage.setScene(GameMenu(playerClass));
                }
                if(KnightBtn.isSelected())
                {
-                   player.Knight();
-                   stage.setScene(GameMenu(player));
+                   Classes playerClass = player.getClass("Knight");
+                   playerClass.setStats();
+                   stage.setScene(GameMenu(playerClass));
                }
                if(RogueBtn.isSelected())
                {
-                   player.Rogue();
-                   stage.setScene(GameMenu(player));
+                   Classes playerClass = player.getClass("Rogue");
+                   playerClass.setStats();
+                   stage.setScene(GameMenu(playerClass));
                }
                if(WizardBtn.isSelected())
                {
-                   player.Wizard();
-                   stage.setScene(GameMenu(player));
+                   Classes playerClass = player.getClass("Wizard");
+                   playerClass.setStats();
+                   stage.setScene(GameMenu(playerClass));
                }
 
            }
@@ -236,7 +238,7 @@ public class AdventureSimulator extends Application
     }
     protected Scene GameMenu(Classes player)
     {
-        
+        player.setName(name);
         Game_Actions game = new Game_Actions();
         Button Statsbtn = new Button("stats");
         Button adventurebtn = new Button("Start Adventure");
@@ -282,7 +284,6 @@ public class AdventureSimulator extends Application
         {
             public void handle(ActionEvent t)
             {
-                //game.fight(player, enemy);
                 adventurebtn.setVisible(false);
                 fightbtn.setVisible(true);
                 Statsbtn.setVisible(true);

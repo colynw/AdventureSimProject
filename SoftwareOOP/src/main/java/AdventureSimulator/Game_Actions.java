@@ -6,13 +6,13 @@
 package AdventureSimulator;
 
 import static AdventureSimulator.Classes.die;
-import static AdventureSimulator.Classes.fighting;
 import static AdventureSimulator.Classes.scan;
 
 
 
 public class Game_Actions 
 {
+    public static boolean fighting = false;
     String PlayerTxt;
     String lvlTxt;
     int enemyhp = 0;
@@ -22,8 +22,7 @@ public class Game_Actions
     
     public String Display_status(Classes player) //displays player status
     {
-        //System.out.println(player.Name + "\nhp: " + player.playerhp + "\nmana: " + player.mana + "\ndamage: " + player.player_melee_dmg + "\nxp: " + player.xp + "\n");
-        String text = (player.Name + "\nhp: " + player.playerhp + "\nmana: " + player.mana + "\ndamage: " + player.player_melee_dmg + "\nxp: " + player.xp + "\n");
+        String text = (player.getName() + "\nhp: " + player.getPlayerhp() + "\nmana: " + player.getMana() + "\ndamage: " + player.getPlayer_melee_dmg() + "\nxp: " + player.getXp() + "\n");
         return text;
     }
     
@@ -39,7 +38,7 @@ public class Game_Actions
         fighting = true;
 
             //System.out.println("Press 'a' to attack\nPress 'i' for info");
-            if(player.char_class.equals("Wizard"))
+            if(player.getChar_class().equals("Wizard"))
             {
                 System.out.print("Press 's' for spells \n");
             }
@@ -49,23 +48,23 @@ public class Game_Actions
                 fighting = attack(player,enemy);
                 if(fighting == false)
                 {
-                    switch(player.level)
+                    switch(player.getLevel())
                     {
                         case 1:
-                            player.xp = player.xp + 4;
+                            player.setXp(player.getXp() + 4);
                             break;
                         case 2:
-                            player.xp = player.xp + 6;
+                            player.setXp(player.getXp() + 6);
                             break;
                         case 3:
-                            player.xp = player.xp + 9;
+                            player.setXp(player.getXp() + 9);
                             break;
                         case 4:
-                            player.xp = player.xp + 12;
+                            player.setXp(player.getXp() + 12);
                             break;
                     }
-                    System.out.println("You earned :" + player.xp + " xp");
-                    lvlTxt = ("You Earned: " +player.xp+ " xp");
+                    System.out.println("You earned :" + player.getXp() + " xp");
+                    lvlTxt = ("You Earned: " +player.getXp()+ " xp");
                     checkLevelUp(player);
                     return;
                 }
@@ -133,7 +132,7 @@ public class Game_Actions
         {
             System.out.println("You hit!");
             PlayerTxt = ("You hit!");
-            enemy.enemyhp = enemy.enemyhp - player.player_melee_dmg;
+            enemy.enemyhp = enemy.enemyhp - player.getPlayer_melee_dmg();
             if(enemy.enemyhp <= 0)
             {
                 System.out.println("You Won!");
@@ -151,7 +150,7 @@ public class Game_Actions
     }
     public static void gameover(Classes player)
     {
-        System.out.println(player.Name + " Died!") ;
+        System.out.println(player.getName() + " Died!") ;
         System.out.println("GAME OVER!");
         System.exit(0);
         return;
@@ -162,83 +161,83 @@ public class Game_Actions
     
     protected void checkLevelUp(Classes player) 
         {
-        if(player.xp >= 1000 && player.level == 6){
+        if(player.getXp() >= 1000 && player.getLevel() == 6){
             System.out.println("Level 7!");
             lvlTxt = ("Level 7!");
-            player.level = player.level + 1;
-            player.maxhp = player.maxhp + 25;
-            player.playerhp = player.maxhp;
-            if(player.char_class.equals("wizard")){
-                player.maxmana = player.maxmana + 7;
-                player.mana = player.maxmana;
+            player.setLevel(player.getLevel() + 1);
+            player.setMaxhp(player.getMaxhp() + 25);
+            player.setPlayerhp(player.getMaxhp());
+            if(player.getChar_class().equals("wizard")){
+                player.setMaxmana(player.getMaxmana() + 7);
+                player.setMana(player.getMaxmana());
             }
-            player.player_melee_dmg = player.player_melee_dmg + 3;
+            player.setPlayer_melee_dmg(player.getPlayer_melee_dmg() + 3);
             Display_status(player);
         }else
-        if(player.xp >= 400 && player.level == 5){
+        if(player.getXp() >= 400 && player.getLevel() == 5){
             System.out.println("Level 6!");
             lvlTxt = ("Level 6!");
-            player.level = player.level + 1;
-            player.maxhp = player.maxhp + 25;
-            player.playerhp = player.maxhp;
-            if(player.char_class.equals("wizard")){
-                player.maxmana = player.maxmana + 7;
-                player.mana = player.maxmana;
+            player.setLevel(player.getLevel() + 1);
+            player.setMaxhp(player.getMaxhp() + 25);
+            player.setPlayerhp(player.getMaxhp());
+            if(player.getChar_class().equals("wizard")){
+                player.setMaxmana(player.getMaxmana() + 7);
+                player.setMana(player.getMaxmana());
             }
-            player.player_melee_dmg = player.player_melee_dmg + 3;
+            player.setPlayer_melee_dmg(player.getPlayer_melee_dmg() + 3);
             Display_status(player);
         }else
-        if(player.xp >= 100 && player.level == 4){
+        if(player.getXp() >= 100 && player.getLevel() == 4){
             System.out.println("Level 5!");
             lvlTxt = ("Level 5!");
-            player.level = player.level + 1;
-            player.maxhp = player.maxhp + 25;
-            player.playerhp = player.maxhp;
-            if(player.char_class.equals("wizard")){
-                player.maxmana = player.maxmana + 7;
-                player.mana = player.maxmana;
+            player.setLevel(player.getLevel() + 1);
+            player.setMaxhp(player.getMaxhp() + 25);
+            player.setPlayerhp(player.getMaxhp());
+            if(player.getChar_class().equals("wizard")){
+                player.setMaxmana(player.getMaxmana() + 7);
+                player.setMana(player.getMaxmana());
             }
-            player.player_melee_dmg = player.player_melee_dmg + 3;
+            player.setPlayer_melee_dmg(player.getPlayer_melee_dmg() + 3);
             Display_status(player);
         }else
-        if(player.xp >= 50 && player.level == 3){
+        if(player.getXp() >= 50 && player.getLevel() == 3){
             System.out.println("Level 4!");
             lvlTxt = ("Level 4!");
-            player.level = player.level + 1;
-            player.maxhp = player.maxhp + 20;
-            player.playerhp = player.maxhp;
-            if(player.char_class.equals("wizard")){
-                player.maxmana = player.maxmana + 7;
-                player.mana = player.maxmana;
+            player.setLevel(player.getLevel() + 1);
+            player.setMaxhp(player.getMaxhp() + 20);
+            player.setPlayerhp(player.getMaxhp());
+            if(player.getChar_class().equals("wizard")){
+                player.setMaxmana(player.getMaxmana() + 7);
+                player.setMana(player.getMaxmana());
             }
-            player.player_melee_dmg = player.player_melee_dmg + 2;
+            player.setPlayer_melee_dmg(player.getPlayer_melee_dmg() + 2);
             Display_status(player);
         }else
-        if(player.xp >= 25 && player.level == 2){
+        if(player.getXp() >= 25 && player.getLevel() == 2){
             System.out.println("Level 3!");
             lvlTxt = ("Level 3!");
-            player.level = player.level + 1;
-            player.maxhp = player.maxhp + 10;
-            player.playerhp = player.maxhp;
-            if(player.char_class.equals("wizard")){
-                player.maxmana = player.maxmana + 7;
-                player.mana = player.maxmana;
+            player.setLevel(player.getLevel() + 1);
+            player.setMaxhp(player.getMaxhp() + 10);
+            player.setPlayerhp(player.getMaxhp());
+            if(player.getChar_class().equals("wizard")){
+                player.setMaxmana(player.getMaxmana() + 7);
+                player.setMana(player.getMaxmana());
             }
-            player.player_melee_dmg = player.player_melee_dmg + 2;
+            player.setPlayer_melee_dmg(player.getPlayer_melee_dmg() + 2);
             Display_status(player);
         }else
-        if(player.xp >= 10 && player.level == 1){
+        if(player.getXp() >= 10 && player.getLevel() == 1){
             System.out.println("Level 2!");
             lvlTxt = ("Level 2!");
-            player.level = player.level + 1;
-            player.maxhp = player.maxhp + 5;
-            player.playerhp = player.maxhp;
-            if(player.char_class.equals("wizard"))
+            player.setLevel(player.getLevel() + 1);
+            player.setMaxhp(player.getMaxhp() + 5);
+            player.setPlayerhp(player.getMaxhp());
+            if(player.getChar_class().equals("wizard"))
             {
-                player.maxmana = player.maxmana + 7;
-                player.mana = player.maxmana;
+                player.setMaxmana(player.getMaxmana() + 7);
+                player.setMana(player.getMaxmana());
             }
-            player.player_melee_dmg = player.player_melee_dmg + 1;
+            player.setPlayer_melee_dmg(player.getPlayer_melee_dmg() + 1);
             Display_status(player);
         }
 

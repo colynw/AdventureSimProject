@@ -1,107 +1,45 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package AdventureSimulator;
 
 import java.util.Scanner;
 
-public class Classes 
-{   
+/**
+ *
+ * @author eboon
+ */
+public interface Classes {
     //variables//
-    protected String Name;
-    protected int Health;
-    protected String char_class;
-    protected int maxhp;
-    protected int playerhp;
-    protected int mana,maxmana;
-    protected int player_melee_dmg;
-    protected int xp;
-    protected int level;
-    protected static boolean fighting = false; 
     static dice die = new dice();
-    //Enemies enemy = new Enemies(1,1);
     static Scanner scan = new Scanner(System.in);
-    //end of variable declaration//
+
+    public abstract void setStats();
     
-    Classes(String Name)
-    {
-        this.Name = Name;
-        //this.selectClass();
-    }
-    
-    //class methods//
-    protected void Rogue()
-    {
-        char_class = "Rogue";
-        maxhp = 14;
-        playerhp = 14;
-        player_melee_dmg = 6;
-        xp = 0;
-        level = 1;
-        
-    }
-    
-    protected void Wizard()
-    {
-        char_class = "Wizard";
-        maxhp = 10;
-        playerhp = 10;
-        mana = 20;
-        maxmana = 20;
-        player_melee_dmg = 2;
-        xp = 0;
-        level = 1;
-    }
-   
-    protected void Berserker()
-    {
-        char_class = "Berserker";
-        maxhp = 28;
-        playerhp = 28;
-        player_melee_dmg = 8;
-        xp = 0;
-        level = 1;
-        
-    }
-    
-    protected void Knight()
-    {
-        char_class = "Knight";
-        maxhp = 20;
-        playerhp = 20;
-        player_melee_dmg = 4;
-        xp = 0;
-        level = 1;
+    public abstract String getChar_class();
+    public abstract int getMaxhp();
+    public abstract int getPlayerhp();
+    public abstract int getPlayer_melee_dmg();
+    public abstract int getXp();
+    public abstract int getLevel();
+    public abstract String getName();
+    public default int getMana() {
+        return 0;
     }
 
-    protected void selectClass() {
-        System.out.println("Choose your class");
-        System.out.println("'k' for knight");
-        System.out.println("'r' for rogue");
-        System.out.println("'w' for wizard");
-        System.out.println("'b' for berserker");
-        String charclass = scan.nextLine();
-        while(charclass.charAt(0) != 'k' && charclass.charAt(0) != 'r' && charclass.charAt(0) != 'w' && charclass.charAt(0) != 'b' && charclass.charAt(0) != 'a'){
-            System.out.println("'k' for knight");
-            System.out.println("'r' for rogue");
-            System.out.println("'w' for wizard");
-            System.out.println("'b' for berserker");
-            charclass = scan.nextLine();
-        }
-        if(charclass.charAt(0) == 'k')
-        {
-            this.Knight();
-        }
-        else if(charclass.charAt(0) == 'r')
-        {
-            this.Rogue();
-        }
-        else if(charclass.charAt(0) == 'w')
-        {
-            this.Wizard();
-        }
-        else if(charclass.charAt(0) == 'b'){
-            this.Berserker();
-        }
+    public default int getMaxmana() {
+        return 0;
     }
-
+    
+    public abstract void setChar_class(String char_class);
+    public abstract void setMaxhp(int maxhp);
+    public abstract void setPlayerhp(int playerhp);
+    public abstract void setPlayer_melee_dmg(int player_melee_dmg);
+    public abstract void setXp(int xp);
+    public abstract void setLevel(int level);
+    public abstract void setName(String name);
+    public default void setMana(int mana) {}
+    public default void setMaxmana(int maxmana) {}
 }
-
