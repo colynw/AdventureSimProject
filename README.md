@@ -13,7 +13,7 @@ Feb 14th Github link due
 
  HIGHLY RECOMMENDED NET BEANS ZIP GUIDE on compiling;
 # using net beans download the repository as a .zip extension
-# open netbeans and navigate to file on the toolbar select import project from zip\
+# open netbeans and navigate to file on the toolbar select import project from zip
 # compile the project
 
 General Compilation semi-guide not recommended
