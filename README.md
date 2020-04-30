@@ -14,7 +14,9 @@ Feb 14th Github link due
 
 
 plugins:
+
 the nb-javac java editing support library [2.0]
+
 nb-javac Impl[2.1]
 
  HIGHLY RECOMMENDED NET BEANS ZIP GUIDE on compiling;
