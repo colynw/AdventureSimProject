@@ -12,13 +12,6 @@ Feb 14th Github link due
 
 
 
-
-plugins:
-
-the nb-javac java editing support library [2.0]
-
-nb-javac Impl[2.1]
-
  HIGHLY RECOMMENDED NET BEANS ZIP GUIDE on compiling if operating system is windows os or mac os.
 # using net beans download the repository as a .zip extension
 # open netbeans and navigate to file on the toolbar select import project from zip
