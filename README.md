@@ -11,6 +11,12 @@ Feb 14th Github link due
 #guide on how to compile the program
 
 
+
+
+plugins:
+the nb-javac java editing support library [2.0]
+nb-javac Impl[2.1]
+
  HIGHLY RECOMMENDED NET BEANS ZIP GUIDE on compiling;
 # using net beans download the repository as a .zip extension
 # open netbeans and navigate to file on the toolbar select import project from zip
