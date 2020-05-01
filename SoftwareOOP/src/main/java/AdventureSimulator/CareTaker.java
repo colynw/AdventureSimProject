@@ -1,3 +1,8 @@
+package AdventureSimulator;
+import java.util.ArrayList;
+
+
+
 public class CareTaker	{
 
 	private ArrayList<Memento> mementos = new ArrayList<>();
