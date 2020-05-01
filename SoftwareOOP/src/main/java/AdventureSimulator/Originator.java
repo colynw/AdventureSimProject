@@ -5,14 +5,18 @@ public class Originator	{
 		private int hp;
 
 		private int xp;
+                
+                private int enemyHP;
+                
 
 
-	public void setState(int myhp,int myxp)	{
+	public void setState(int myhp,int myxp, int enemyHP)	{
 		
 		this.hp = myhp;
 
 		this.xp = myxp;
-
+                
+                this.enemyHP = enemyHP;
 	}
 
 
@@ -21,8 +25,10 @@ public class Originator	{
 		int savedhp = this.hp;
 
 		int savedxp = this.xp;
+                
+                int enemyHP = this.enemyHP;
 	
-		return new Memento(savedhp,savedxp);	
+		return new Memento(savedhp,savedxp, enemyHP);	
 	}
 
 	public int restoreHP()	{
@@ -36,5 +42,9 @@ public class Originator	{
 		return this.xp;
 
 	}
+        public int restoreEnemyHP()
+        {
+            return this.enemyHP;
+        }
 
 }
