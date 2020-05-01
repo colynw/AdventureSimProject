@@ -254,8 +254,6 @@ public class AdventureSimulator extends Application
 	Originator originator = new Originator();
 
 	CareTaker caretaker = new CareTaker(); 
-
-	caretaker.set(null,null);
         
         Label StatsLbl = new Label();
         Label enemyLbl = new Label();
@@ -337,7 +335,7 @@ public class AdventureSimulator extends Application
                 	StatsLbl.setText(game.Display_status(player));
                         enemyLbl.setText(enemy.printEnemyStats());
                         
-
+                        gameLbl.setVisible(true);
 			gameLbl.setText("You have restored your player's stats");
 		}
 
@@ -378,8 +376,8 @@ public class AdventureSimulator extends Application
                     gameLbl.setText("A new enemy approches!");
                     
                     enemyatkLbl.setVisible(false);
-		    savebtn.setVisible(true);
-		    //restorebtn.setVisible(false);
+		    savebtn.setVisible(false);
+		    restorebtn.setVisible(true);
                     enemyLbl.setVisible(false);
                     playeratkLbl.setVisible(false);
                     
