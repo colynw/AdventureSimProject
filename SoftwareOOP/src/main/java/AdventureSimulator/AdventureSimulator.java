@@ -336,7 +336,7 @@ public class AdventureSimulator extends Application
 
 		
 
-	}
+	});
 
         fightbtn.setOnAction(new EventHandler<ActionEvent>()
         {
