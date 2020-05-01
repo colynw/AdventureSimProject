@@ -293,8 +293,6 @@ public class AdventureSimulator extends Application
                 adventurebtn.setVisible(false);
                 fightbtn.setVisible(true);
                 Statsbtn.setVisible(true);
-               	savebtn.setVisible(true);
-		restorebtn.setVisible(true); 
                 gameLbl.setText("an enemy approches!");
                 
                 
@@ -411,6 +409,8 @@ public class AdventureSimulator extends Application
                     enemy.enemyhp = enemy1.enemyhp;
                     enemy.enemy_melee_dmg = enemy1.enemy_melee_dmg;
                     atkbtn.setVisible(true);
+		    savebtn.setVisible(true);
+		    restorebtn.setVisible(true);
                     continuebtn.setVisible(false);
                     StatsLbl.setText(game.Display_status(player));
                     enemyLbl.setText(enemy.printEnemyStats());
