@@ -51,6 +51,15 @@ public class Enemies {   //variables//
         return text;
 
     }
+    public int setEnemyHp(int enemyhp)
+    {
+        this.enemyhp = enemyhp;
+        return enemyhp;
+    }
+    public int getEnemyHP()
+    {
+        return enemyhp;
+    }
 
     protected void enemyattack(Classes player, Enemies enemy) {
 
