@@ -254,6 +254,8 @@ public class AdventureSimulator extends Application
 	Originator originator = new Originator();
 
 	CareTaker caretaker = new CareTaker(); 
+
+	caretaker.set(null,null);
         
         Label StatsLbl = new Label();
         Label enemyLbl = new Label();

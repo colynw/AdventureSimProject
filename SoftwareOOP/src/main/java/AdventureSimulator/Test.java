@@ -1,13 +1,39 @@
-public class Test	{
-	private String y;
+package AdventureSimulator;
+import java.util.ArrayList;
 
-	public void setX(String x)	{
-		this.y = "Parcheesi";
-		System.out.println(x);
+
+
+public class Test {
+
+	private ArrayList<Integer> test = new ArrayList<>();
+		
+
+	public void setArr()	{
+		
+		test.add(0);
+	}
+
+	public void addArr()	{
+		
+		test.set(0,9849284);
+	}
+
+	public void getElem()	{
+		
+		System.out.printf("%d",test.get(0));
 	}
 
 	public static void main(String args[])	{
+		
+		Test t = null;
 
+		t = new Test();
 
+		t.setArr();
+
+		t.addArr();
+		
+		t.getElem();
 	}
 }
+
