@@ -306,30 +306,35 @@ public class AdventureSimulator extends Application
 			savebtn.setVisible(false);		
 				
 	
-			originator.setState(player.getPlayerhp(),player.getXp());
+			originator.setState(player.getPlayerhp(),player.getXp(),enemy.enemyhp);
 
 			caretaker.addMemento(originator.save());			
 				
 
 			gameLbl.setText("You have saved your player's stats");
+                        
 		}
 
 
 
 	});
 	
-	restorebtn.setOnAction(new EventHanlder<ActionEvent>()
+	restorebtn.setOnAction(new EventHandler<ActionEvent>()
 	{
 		public void handle(ActionEvent t)	
 		{
 
-			restorebtn.setVisible(false);
+			restorebtn.setVisible(true);
 
 			player.setPlayerhp(originator.restoreHP());
 
 			player.setXp(originator.restoreXP());
+                        
+                        enemy.setEnemyHp(originator.restoreEnemyHP());
 
                 	StatsLbl.setText(game.Display_status(player));
+                        enemyLbl.setText(enemy.printEnemyStats());
+                        
 
 			gameLbl.setText("You have restored your player's stats");
 		}
@@ -372,7 +377,7 @@ public class AdventureSimulator extends Application
                     
                     enemyatkLbl.setVisible(false);
 		    savebtn.setVisible(true);
-		    restorebtn.setVisible(false);
+		    //restorebtn.setVisible(false);
                     enemyLbl.setVisible(false);
                     playeratkLbl.setVisible(false);
                     
