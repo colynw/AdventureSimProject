@@ -327,7 +327,9 @@ public class AdventureSimulator extends Application
 
 			restorebtn.setVisible(false);
 
-			player.setPlayerhp(originator.restoreHP(),originator.restoreXP());
+			player.setPlayerhp(originator.restoreHP());
+
+			player.setXp(originator.restoreXP());
 
                 	StatsLbl.setText(game.Display_status(player));
 
