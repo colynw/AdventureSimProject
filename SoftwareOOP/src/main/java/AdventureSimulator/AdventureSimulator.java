@@ -244,12 +244,16 @@ public class AdventureSimulator extends Application
         Button adventurebtn = new Button("Start Adventure");
         Button fightbtn = new Button("fight!");
         Button atkbtn = new Button("attack");
+	Button savebtn = new Button("Save");
+	Button restorebtn = new Button("Restore");
         Button enemystats = new Button("enemystats");
         Button continuebtn = new Button("Continue forward!");
         
         Enemies enemy = new Enemies(player);
-        
-        
+
+	Originator originator = new Originator();
+
+	CareTaker caretaker = new CareTaker(); 
         
         Label StatsLbl = new Label();
         Label enemyLbl = new Label();
@@ -263,6 +267,8 @@ public class AdventureSimulator extends Application
         
         fightbtn.setVisible(false);
         atkbtn.setVisible(false);
+	savebtn.setVisible(false);
+	restorebtn.setVisible(false);
         enemystats.setVisible(false);
         Statsbtn.setVisible(false);
         continuebtn.setVisible(false);
@@ -287,12 +293,51 @@ public class AdventureSimulator extends Application
                 adventurebtn.setVisible(false);
                 fightbtn.setVisible(true);
                 Statsbtn.setVisible(true);
-                
+               	savebtn.setVisible(true);
+		restorebtn.setVisible(true); 
                 gameLbl.setText("an enemy approches!");
                 
                 
             }
         });
+
+	savebtn.setOnAction(new EventHandler<ActionEvent>()
+	{
+		public void handle(ActionEvent t)
+		{
+			savebtn.setVisible(false);		
+				
+	
+			originator.setState(player.getPlayerhp(),player.getXp());
+
+			caretaker.addMemento(originator.save());			
+				
+
+			gameLbl.setText("You have saved your player's stats");
+		}
+
+
+
+	});
+	
+	restorebtn.setOnAction(new EventHanlder<ActionEvent>()
+	{
+		public void handle(ActionEvent t)	
+		{
+
+			restorebtn.setVisible(false);
+
+			player.setPlayerhp(originator.restoreHP(),originator.restoreXP());
+
+                	StatsLbl.setText(game.Display_status(player));
+
+			gameLbl.setText("You have restored your player's stats");
+		}
+
+		
+
+	}
+
         fightbtn.setOnAction(new EventHandler<ActionEvent>()
         {
             public void handle(ActionEvent t)
@@ -326,6 +371,8 @@ public class AdventureSimulator extends Application
                     gameLbl.setText("A new enemy approches!");
                     
                     enemyatkLbl.setVisible(false);
+		    savebtn.setVisible(true);
+		    restorebtn.setVisible(false);
                     enemyLbl.setVisible(false);
                     playeratkLbl.setVisible(false);
                     
@@ -376,7 +423,7 @@ public class AdventureSimulator extends Application
         
         
         
-        status_menu.getChildren().addAll(adventurebtn,Statsbtn,StatsLbl,fightbtn,enemystats,enemyLbl,atkbtn,continuebtn,gameLbl,playeratkLbl,lvlLbl,enemyatkLbl);
+        status_menu.getChildren().addAll(adventurebtn,Statsbtn,StatsLbl,fightbtn,enemystats,enemyLbl,savebtn,restorebtn,atkbtn,continuebtn,gameLbl,playeratkLbl,lvlLbl,enemyatkLbl);
         status_menu.setSpacing(20);
         status_menu.setMinSize(1280,720);
         status_menu.setAlignment(Pos.CENTER);
